@@ -191,7 +191,7 @@
   "custom/updates": {
     "format": "{}",
     "exec": "~/.config/waybar/scripts/update_count.sh",
-    "on-click": "~/.config/waybar/scripts/start_floating_alacritty.sh",
+    "on-click-middle": "~/.config/waybar/scripts/start_floating_alacritty.sh",
     "on-click-right": "~/.config/waybar/scripts/update_count.sh",
     "interval": 300,
     "tooltip": true,
