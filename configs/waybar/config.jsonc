@@ -1,0 +1,220 @@
+{
+  "layer": "top",
+  "position": "top",
+  "mod": "dock",
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  "height": 20,
+  "modules-left": [
+    "custom/launch_wofi",
+    "custom/floating_alacritty",
+    "wlr/workspaces",
+    "wlr/taskbar"
+  ],
+  "modules-center": ["clock", "custom/weather"],
+  "modules-right": [
+    "custom/updates",
+    "idle_inhibitor",
+    "tray",
+    "temperature",
+    "memory",
+    "cpu",
+    "pulseaudio",
+    "pulseaudio#microphone",
+    "backlight",
+    "battery",
+    "hyprland/language",
+    "custom/power_btn"
+  ],
+  "temperature": {
+    "interval": 2,
+    "tooltip": true,
+    "critical-threshold": 80,
+    "format": "",
+    "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+    "tooltip-format": "CPU temperature: {temperatureC}°C | {temperatureF}°F | {temperatureK}°K",
+    "format-alt-click": "click-middle",
+    "format-alt": " {temperatureC}°C",
+    "format-critical": " {temperatureC}°C",
+    "on-click": "alacritty --title 'btop' -e 'btop'"
+  },
+  "clock": {
+    "format": "{: %Y-%m-%d  %H:%M}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "on-click": "gsimplecal",
+    "on-click-middle": "gnome-clocks",
+    "on-click-right": "thunderbird -calendar",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "months": "<span color='#f6f7fc'><b>{}</b></span>",
+        "days": "<span color='#f6f7fc'><b>{}</b></span>",
+        "weeks": "<span color='#59c2ff'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffb454'><b>{}</b></span>",
+        "today": "<span color='#c2d94c'><b><u>{}</u></b></span>"
+      }
+    }
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "󰛐",
+      "deactivated": "󰛑"
+    },
+    "tooltip": true
+  },
+  "hyprland/language": {
+    "interval": 30,
+    "format": " {}",
+    "format-en": "en",
+    "format-us": "us",
+    "format-ru": "ru",
+    "keyboard-name": "at-translated-set-2-keyboard",
+    "on-click": "~/.config/waybar/scripts/set_keyboard.sh",
+    "signal": 8
+  },
+  "wlr/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "on-click": "activate",
+    "persistent_workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": [],
+      "7": [],
+      "8": [],
+      "9": [],
+      "10": []
+    }
+  },
+  "memory": {
+    "interval": 5,
+    "max-length": 10,
+    "format": "󰘚",
+    "format-alt-click": "click-middle",
+    "format-alt": "󰘚 {percentage}%",
+    "tooltip-format": "RAM memory.\nTotal: {total:0.1f}GiB + {swapTotal:0.1f}GiB swap\nUsed:  {used:0.1f}GiB + {swapUsed:0.1f}GiB swap",
+    "on-click": "alacritty --title 'btop' -e 'btop'"
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "󰍛",
+    "format-alt-click": "click-middle",
+    "format-alt": "󰍛 {usage}%",
+    "on-click": "alacritty --title 'btop' -e 'btop'"
+  },
+  "battery": {
+    "interval": 5,
+    "states": {
+      "good": 80,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{icon}",
+    "tooltip-format": "No charger plugged.\nPower waste: {power} Watt\nCurrent level: {capacity}%\n{timeTo}",
+    "tooltip-format-charging": "Charging.\nCharge power: {power} Watt\nCurrent level: {capacity}%\n{timeTo}",
+    "tooltip-format-plugged": "Plugged.\n\nCurrent level: {capacity}%",
+    "tooltip-format-full": "Battery is full.\n\nCurrent level: {capacity}%",
+    "tooltip-format-empry": "Battery is empty!!!\n\nCurrent level: {capacity}%",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-muted": "",
+    "on-click": "~/.config/waybar/scripts/volume.sh --toggle",
+    "on-click-right": "pavucontrol --tab=1",
+    "on-scroll-up": "~/.config/waybar/scripts/volume.sh --inc",
+    "on-scroll-down": "~/.config/waybar/scripts/volume.sh --dec",
+    "scroll-step": 5,
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    },
+    "tooltip": true,
+    "tooltip-format": "Volume at {volume}%. Source: {desc}"
+  },
+  "pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": "",
+    "format-source-muted": "",
+    "on-click": "~/.config/waybar/scripts/volume.sh --toggle-mic",
+    "on-click-right": "pavucontrol --tab=2",
+    "on-scroll-up": "~/.config/waybar/scripts/volume.sh --mic-inc",
+    "on-scroll-down": "~/.config/waybar/scripts/volume.sh --mic-dec",
+    "scroll-step": 5,
+    // пока отключил, потому что отображается некорректно
+    "tooltip": false,
+    "tooltip-format": "{}"
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon}",
+    "format-icons": ["󰃞", "󰃟", "󰃠"],
+    "tooltip": true,
+    "tooltip-format": "Brightness at {percent}%",
+    "on-scroll-up": "~/.config/waybar/scripts/brightness.sh --inc",
+    "on-scroll-down": "~/.config/waybar/scripts/brightness.sh --dec"
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10
+  },
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 24,
+    "all-outputs": true,
+    "tooltip-format": "{name} - {title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "ignore-list": ["wofi"]
+  },
+  "custom/weather": {
+    "tooltip": true,
+    "format": "{}",
+    "interval": 30,
+    "exec": "~/.config/waybar/scripts/waybar-wttr.py",
+    "return-type": "json"
+  },
+  "custom/updates": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/update_count.sh",
+    "on-click": "~/.config/waybar/scripts/start_floating_alacritty.sh",
+    "on-click-right": "~/.config/waybar/scripts/update_count.sh",
+    "interval": 300,
+    "tooltip": true,
+    "tooltip-format": "{}"
+  },
+  "custom/power_btn": {
+    "format": "",
+    "on-click": "~/.config/waybar/scripts/wlogout.sh",
+    "tooltip": false
+  },
+  "custom/lock_screen": {
+    "format": "",
+    "on-click": "~/.config/waybar/scripts/swaylock.sh",
+    "tooltip": false
+  },
+  "custom/launch_wofi": {
+    "format": "󱗼",
+    "on-click": "~/.config/waybar/scripts/big_wofi.sh",
+    "tooltip": false
+  },
+  "custom/floating_alacritty": {
+    "format": "",
+    "on-click": "~/.config/waybar/scripts/start_floating_alacritty.sh",
+    "tooltip": false
+  }
+}
