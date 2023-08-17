@@ -8,15 +8,15 @@
 
 ## Краткая информация
 
-OS: Arch Linux
-WM: Hyprland
-Terminal: alacritty
-Shell: zsh
-Bar: Waybar
-Fonts: JetBrainsMono Nerd Font
-GTK: Ayu-Mirage-Dark (Custom)
-wofi: ayu-mirage (Custom)
-Icons: Papirus-Dark
+- OS: Arch Linux
+- WM: Hyprland
+- Terminal: alacritty
+- Shell: zsh
+- Bar: Waybar
+- Fonts: JetBrainsMono Nerd Font
+- GTK: Ayu-Mirage-Dark (Custom)
+- wofi: ayu-mirage (Custom)
+- Icons: Papirus-Dark
 
 ## Nvidea
 
